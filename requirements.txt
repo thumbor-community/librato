@@ -1,0 +1,1 @@
+-e git://github.com/Jimdo/thumbor.git@23a400b903da78aa9b65f91a1e6231fb294e9a3d#egg=jimdo-thumbor

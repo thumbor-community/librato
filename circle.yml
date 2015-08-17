@@ -1,0 +1,8 @@
+dependencies:
+  override:
+    - pip install pyvows
+    - python setup.py install
+
+test:
+  override:
+    - pyvows -c -l tc_librato
