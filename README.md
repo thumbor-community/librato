@@ -9,12 +9,19 @@ Send Thumbor runtime metrics to your Librato account.
 ## Installation
 
 ```bash
+# master branch
+pip install -e git://github.com/thumbor-community/librato.git@master#egg=tc_librato
+
+# latest stable
 pip install tc_librato
 ```
 
 ## Configuration
 
 ```python
+# thumbor.conf
+METRICS = 'tc_librato.metrics.librato_metrics'
+
 LIBRATO_USER = 'username' # Librato api username
 LIBRATO_TOKEN = 'token' # Librato api token
 
