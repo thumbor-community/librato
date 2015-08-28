@@ -1,1 +1,2 @@
 -e git://github.com/thumbor/thumbor.git@dbceddc79cefbf37d6b59b3f046e300574bc7a35#egg=thumbor-latest
+pyvows
