@@ -1,1 +1,1 @@
--e git://github.com/Jimdo/thumbor.git@23a400b903da78aa9b65f91a1e6231fb294e9a3d#egg=jimdo-thumbor
+-e git://github.com/thumbor/thumbor.git@dbceddc79cefbf37d6b59b3f046e300574bc7a35#egg=thumbor-latest

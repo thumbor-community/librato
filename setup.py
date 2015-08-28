@@ -12,7 +12,7 @@ setup(
     include_package_data=True,
     packages=find_packages(),
     install_requires=[
-        'jimdo-thumbor',
+        'thumbor-latest',
         'librato-metrics',
     ]
 )
