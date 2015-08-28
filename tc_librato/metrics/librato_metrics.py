@@ -8,24 +8,30 @@
 # http://www.opensource.org/licenses/mit-license
 # Copyright (c) 2011 globo.com timehome@corp.globo.com
 
-import statsd
+import os
+import datetime
+import librato
 from thumbor.metrics import BaseMetrics
 
 
 class Metrics(BaseMetrics):
 
     @classmethod
-    def client(cls, config):
+    def queue(cls, config):
         """
-        Cache statsd client so it doesn't do a DNS lookup
-        over and over
+        Cached Librato queue for batch submitting
         """
-        if not hasattr(cls, "_client"):
-            cls._client = statsd.StatsClient(config.STATSD_HOST, config.STATSD_PORT, config.STATSD_PREFIX)
-        return cls._client
+        if not hasattr(cls, "_queue"):
+            api = librato.connect(config.LIBRATO_USER, config.LIBRATO_TOKEN)
+            cls._queue = api.new_queue(auto_submit_count=config.LIBRATO_QUEUE_LENGTH)
+
+        return cls._queue
 
     def incr(self, metricname, value=1):
-        Metrics.client(self.config).incr(metricname, value)
+        Metrics.queue(self.config).add(self._prefixed_name(metricname), value)
 
     def timing(self, metricname, value):
-        Metrics.client(self.config).timing(metricname, value)
+        Metrics.queue(self.config).add(self._prefixed_name(metricname), value)
+
+    def _prefixed_name(self, metricname):
+        return "%s.%s" % (self.config.LIBRATO_NAME_PREFIX, metricname)
