@@ -1,3 +1,5 @@
 src/
 dist/
 build/
+*.egg-info/
+*.pyc

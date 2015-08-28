@@ -12,7 +12,7 @@ setup(
     include_package_data=True,
     packages=find_packages(),
     install_requires=[
-        'thumbor-latest',
+        'thumbor',
         'librato-metrics',
     ]
 )
